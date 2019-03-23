@@ -59,6 +59,7 @@ else:
     cursor_color = wal_colors.get("special").get("cursor")[1:]
     bold_color = wal_colors.get("colors").get("color6")[1:]
 
+
 mod = "mod4"
 
 keys = [
@@ -89,9 +90,14 @@ keys = [
     Key([], "XF86MonBrightnessUp", lazy.spwan("xbacklight -inc 10")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 10")),
     Key([mod], 'f', lazy.window.toggle_fullscreen()),
+    #Key(['mod1', 'shift'], "Farsi_1", lazy.spawn("terminator")),
     # Switch between windows in current stack pane
     # Key([mod], "k", lazy.layout.down()),
     # Key([mod], "j", lazy.layout.up()),
+    # Key(["mod1", "shift"], '1', lazy.spawn("setxbmap us")),
+    # Key(["mod1", "shift"], '2', lazy.spawn("setxkbmap de")),
+    # Key(["mod1", "shift"], "3", lazy.spawn("setxbmap ir")),
+    # Key([mod], 'space', widget.KeyboardLayout(configured_keyboards=['us', 'ir']).next_keyboard()),
 
     # Move windows up or down in current stack
     # Key([mod, "control"], "k", lazy.layout.shuffle_down()),
@@ -118,6 +124,7 @@ keys = [
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawncmd()),
+    Key([mod], "space", lazy.spawn(f"python {os.path.expanduser('~/.config/qtile/KbLayout.py')}")),
 ]
 
 groups = [Group(i) for i in "12345678"]
